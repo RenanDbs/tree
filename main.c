@@ -39,7 +39,7 @@ char **sort_table(char **table, int nb_files)
     return (table);
 }
 
-int get_path(char **table, int i, char *str)
+int get_path(char **table, int *i, char *str)
 {
     DIR *folder;
     struct dirent *entry;
@@ -47,16 +47,18 @@ int get_path(char **table, int i, char *str)
     int nb_folders = 0;
 
     folder = opendir(str);
+    printf("%s\n", str);
     while ( (entry = readdir(folder)) )
     { 
-        table[i] = strdup(entry->d_name);
-        if (entry->d_type == DT_DIR && (table[i][1] != '\0' && table[i][0] != '.')) {
-            i++;
+        table[*i] = strdup(entry->d_name);
+        printf("%i %s\n", *i, entry->d_name);
+        if (entry->d_type == DT_DIR && (table[*i][1] != '\0' && table[*i][0] != '.')) {
+            *i += 1;
             str = strdup(entry->d_name);
             get_path(table, i, str);
             nb_folders++;
-        }
-        i++;
+        } else
+            *i += 1;
     }
     closedir(folder);
     return (nb_folders);
@@ -70,7 +72,7 @@ int main()
     char *str = "./";
     char **table = malloc(sizeof(char *) * 50);
 
-    nb_folders = get_path(table, i, str);
+    nb_folders = get_path(table, &i, str);
     table  = sort_table(table, nb_files);
     for(int i = 0; i < nb_files; i++)
         printf("TABLE[%d] = %s\n", i, table[i]);
