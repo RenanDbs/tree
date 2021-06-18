@@ -304,7 +304,7 @@ void print_tree(int last, int *flags, char *path, char **table)
 int main(int ac, char **av)
 {
     int *flags = malloc(sizeof(int) * 7);
-    
+
     flags = check_flags(flags, ac, av);
     get_path("./", 0, flags);
     printf("\n%i directories, %i files\n\n", flags[4], flags[5]);
