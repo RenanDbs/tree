@@ -287,7 +287,7 @@ void print_tree(int last, int *flags, char *path, char **table)
             if (((flags[0] == 1) || (table[i][0] != '.' && flags[0] == 0)) && flags[2] > flags[6]) {
             flags[4] += 1;
                 if (table[i + 1] == NULL)
-                    get_path(test_path, 1, flags);
+                    get_path(test_path, 0, flags);
                 else
                     get_path(test_path, 0, flags);
             }
