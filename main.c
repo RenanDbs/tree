@@ -124,11 +124,11 @@ void print_tree(int last, int *flags, char *path, char **table)
             printf(".\n");
         test_path = add_path(path, table[i]);
         folder = opendir(test_path);
-        if (flags[3] > flags[6]) {
+        if (flags[2] > flags[6]) {
             if (flags[1] == 1) {
                 if (folder != NULL) {
                     if (flags[0] == 1) {
-                        if (flags[2] == 1) {
+                        if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0)
                                     for (int i = 0; i < flags[6]; i++)
@@ -152,7 +152,7 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         }
                     } else if (table[i][0] != '.'){
-                        if (flags[2] == 1) {
+                        if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0)
                                     for (int i = 0; i < flags[6]; i++)
@@ -179,7 +179,7 @@ void print_tree(int last, int *flags, char *path, char **table)
                 }
             } else {
                 if (flags[0] == 1) {
-                        if (flags[2] == 1) {
+                        if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0)
                                     for (int i = 0; i < flags[6]; i++)
@@ -203,7 +203,7 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         }
                     } else if (table[i][0] != '.') {
-                        if (flags[2] == 1) {
+                        if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0)
                                     for (int i = 0; i < flags[6]; i++)
