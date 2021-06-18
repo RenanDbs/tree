@@ -5,9 +5,7 @@
 ** .
 */
 
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "../include/my.h"
 
 void char_swap(char *a, char *b)
 {

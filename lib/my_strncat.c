@@ -5,7 +5,7 @@
 ** concatenates n chars into string
 */
 
-#include <stdio.h>
+#include "../include/my.h"
 
 char *my_strcat(char *dest, char const *src);
 

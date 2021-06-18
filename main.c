@@ -7,15 +7,6 @@
 
 #include "./include/my.h"
 
-int my_strlen(char *str)
-{
-    int returned = 0;
-
-    for (int i = 0; str[i] != '\0'; i++)
-        returned++;
-    return (returned);
-}
-
 int str_compare(char *str1, char *str2)
 {
     if (str2 == NULL)
@@ -69,10 +60,14 @@ char **sort_table(char **table, int nb_files)
         swapped = 1;
         for (int i = 0; table[i + 1] != NULL; i++)
             if (strcmp(table[i], table[i + 1]) > 0) {
+                tmp = malloc(sizeof(char) * my_strlen(table[i]));
                 swapped = 0;
-                tmp = strdup(table[i]);
-                table[i] = table[i + 1];
-                table[i + 1] = tmp;
+                my_strcpy(tmp, table[i]);
+                table[i] = malloc(sizeof(char) * my_strlen(table[i + 1]));
+                my_strcpy(table[i], table[i + 1]);
+                table[i + 1] = malloc(sizeof(char) * my_strlen(tmp));
+                my_strcpy(table[i + 1], tmp);
+                free(tmp);
             }
     }
     return (table);
@@ -251,17 +246,10 @@ void print_tree(int last, int *flags, char *path, char **table)
     }
 }
 
-int main()
+int main(int ac, char **av)
 {
-    int *input = malloc(sizeof(int) * 7);
+    int *flags = check_flags(ac, av);
 
-    input[0] = 1;
-    input[1] = 0;
-    input[2] = 1;
-    input[3] = 100;
-    input[4] = 0;
-    input[5] = 0;
-    input[6] = 0;
-    get_path("./", 0, input);
-    printf("dir: %i\nfile: %i\n", input[4], input[5]);
+    get_path("./", 0, flags);
+    printf("dir: %i\nfile: %i\n", flags[4], flags[5]);
 }

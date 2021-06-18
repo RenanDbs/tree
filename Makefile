@@ -6,6 +6,18 @@
 ##
 
 SRC	=	./main.c \
+		./get_active_flags.c	\
+		./lib/my_put_nbr.c	\
+		./lib/my_putchar.c	\
+		./lib/my_putstr.c	\
+		./lib/my_revstr.c	\
+		./lib/my_strcat.c	\
+		./lib/my_strcmp.c	\
+		./lib/my_strncat.c	\
+		./lib/printer_assistant.c	\
+		./lib/printf.c	\
+		./my_strcpy.c\
+		./my_strlen.c\
 
 INC	=	-I./lib/
 
