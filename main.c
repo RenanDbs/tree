@@ -104,6 +104,18 @@ int str_compare2(char *str1, char *str2)
     return (1);
 }
 
+char *my_strdup(char *str)
+{
+    char *returned = malloc(sizeof(char) * (my_strlen(str) + 1));
+
+    if (returned == NULL)
+        return (NULL);
+    returned[my_strlen(str)] = '\0';
+    for (int i = 0; str[i] != '\0'; i++)
+        returned[i] = str[i];
+    return (returned);
+}
+
 void get_path(char *path, int last, int *flags)
 {
     int nb_files = cont_files(path);
@@ -115,7 +127,7 @@ void get_path(char *path, int last, int *flags)
     table[nb_files] = NULL;
     folder = opendir(path);
     while ( (entry = readdir(folder)) ) { 
-        table[i] = strdup(entry->d_name);
+        table[i] = my_strdup(entry->d_name);
         i++;
     }
     sort_table(table, nb_files);
