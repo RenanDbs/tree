@@ -7,15 +7,6 @@
 
 #include "./include/my.h"
 
-int my_strlen(char *str)
-{
-    int returned = 0;
-
-    for (int i = 0; str[i] != '\0'; i++)
-        returned++;
-    return (returned);
-}
-
 int str_compare(char *str1, char *str2)
 {
     if (str2 == NULL)
@@ -67,10 +58,14 @@ char **sort_table(char **table, int nb_files)
         swapped = 1;
         for (int i = 0; table[i + 1] != NULL; i++)
             if (strcmp(table[i], table[i + 1]) > 0) {
+                tmp = malloc(sizeof(char) * my_strlen(table[i]));
                 swapped = 0;
-                tmp = strdup(table[i]);
-                table[i] = table[i + 1];
-                table[i + 1] = tmp;
+                my_strcpy(tmp, table[i]);
+                table[i] = malloc(sizeof(char) * my_strlen(table[i + 1]));
+                my_strcpy(table[i], table[i + 1]);
+                table[i + 1] = malloc(sizeof(char) * my_strlen(tmp));
+                my_strcpy(table[i + 1], tmp);
+                free(tmp);
             }
     }
     return (table);

@@ -6,6 +6,8 @@
 ##
 
 SRC	=	./main.c \
+		./my_strcpy.c\
+		./my_strlen.c\
 
 INC	=	-I./lib/
 
