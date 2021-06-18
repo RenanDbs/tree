@@ -57,4 +57,4 @@ int my_strcmp(char const *s1, char const *s2);
 
 int my_printf(const char *format, ...);
 
-int *check_flags(int ac, char **av);
+int *check_flags(int *flagarray, int ac, char **av);

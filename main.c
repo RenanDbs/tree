@@ -60,12 +60,12 @@ char **sort_table(char **table, int nb_files)
         swapped = 1;
         for (int i = 0; table[i + 1] != NULL; i++)
             if (strcmp(table[i], table[i + 1]) > 0) {
-                tmp = malloc(sizeof(char) * my_strlen(table[i]));
+                tmp = malloc(sizeof(char) * (my_strlen(table[i]) + 1));
                 swapped = 0;
                 my_strcpy(tmp, table[i]);
-                table[i] = malloc(sizeof(char) * my_strlen(table[i + 1]));
+                table[i] = malloc(sizeof(char) * (my_strlen(table[i + 1]) + 1));
                 my_strcpy(table[i], table[i + 1]);
-                table[i + 1] = malloc(sizeof(char) * my_strlen(tmp));
+                table[i + 1] = malloc(sizeof(char) * (my_strlen(tmp) + 1));
                 my_strcpy(table[i + 1], tmp);
                 free(tmp);
             }
@@ -301,8 +301,10 @@ void print_tree(int last, int *flags, char *path, char **table)
 
 int main(int ac, char **av)
 {
-    int *flags = check_flags(ac, av);
-
+    int *flags = malloc(sizeof(int) * 7);
+    
+    flags = check_flags(flags, ac, av);
     get_path("./", 0, flags);
     printf("\n%i directories, %i files\n\n", flags[4], flags[5]);
+    free(flags);
 }

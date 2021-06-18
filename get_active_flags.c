@@ -7,10 +7,8 @@
 
 #include "./include/my.h"
 
-int *check_flags(int ac, char **av)
+int *check_flags(int *flagarray, int ac, char **av)
 {
-    int *flagarray = malloc(sizeof(int) * 7);
-
     for (int a = 0; a < 7; a++) {
         flagarray[a] = 0;
     }
