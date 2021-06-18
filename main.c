@@ -143,9 +143,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                     if (flags[0] == 1) {
                         if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -156,9 +160,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -169,9 +177,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                     } else if (table[i][0] != '.'){
                         if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -182,9 +194,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -198,9 +214,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                 if (flags[0] == 1) {
                         if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -211,9 +231,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -224,9 +248,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                     } else if (table[i][0] != '.') {
                         if (flags[3] == 1) {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -237,9 +265,13 @@ void print_tree(int last, int *flags, char *path, char **table)
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-                                if (last == 0)
+                                if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
                                         printf("%s", "|   ");
+                                } else {
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "    ");
+                                }
                                 if (table[i + 1] == NULL)
                                     printf("`-- ");
                                 else
@@ -254,7 +286,7 @@ void print_tree(int last, int *flags, char *path, char **table)
             flags[6] += 1;
             if (((flags[0] == 1) || (table[i][0] != '.' && flags[0] == 0)) && flags[2] > flags[6]) {
             flags[4] += 1;
-                if (table[i + 1] == NULL && flags[6] == 0)
+                if (table[i + 1] == NULL)
                     get_path(test_path, 1, flags);
                 else
                     get_path(test_path, 0, flags);
