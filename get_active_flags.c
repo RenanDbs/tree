@@ -18,7 +18,7 @@ int *check_flags(int *flagarray, int ac, char **av)
         if (my_strcmp(av[i], "-d") == 0)
             flagarray[1] = 1;
         if (my_strcmp(av[i], "-L") == 0)
-            flagarray[2] = 1;
+            flagarray[2] = my_getnbr(av[i]);
         if (my_strcmp(av[i], "-f") == 0)
             flagarray[3] = 1; 
     }

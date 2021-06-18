@@ -51,6 +51,8 @@ int my_put_nbr(int nb);
 
 int my_strlen(char *str);
 
+int my_getnbr(char const *str);
+
 void print_tree(int last, int *flags, char *path, char **table);
 
 int my_strcmp(char const *s1, char const *s2);
