@@ -144,11 +144,9 @@ void print_tree(int last, int *flags, char *path, char **table)
     DIR *folder = NULL;
     char *path_cp = NULL;
 
-    // for (int i = 0; i < 7; i++)
-    //     printf("%i\n", flags[i]);
     for (int i = 0; table[i] != NULL; i++) {
         if (i == 0 && flags[6] == 0)
-            printf(".\n");
+            my_printf(".\n");
         test_path = add_path(path, table[i]);
         folder = opendir(test_path);
         if (flags[2] > flags[6]) {
@@ -159,33 +157,33 @@ void print_tree(int last, int *flags, char *path, char **table)
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
+                                    my_printf("%s", "|-- ");
                                 path_cp = str_cp2(&test_path);
-                                printf("%s\n", path_cp);
+                                my_printf("%s\n", path_cp);
                                 free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
-                                printf("%s\n", table[i]);
+                                    my_printf("%s", "|-- ");
+                                my_printf("%s\n", table[i]);
                             }
                         }
                     } else if (table[i][0] != '.'){
@@ -193,33 +191,33 @@ void print_tree(int last, int *flags, char *path, char **table)
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
+                                    my_printf("%s", "|-- ");
                                 path_cp = str_cp2(&test_path);
-                                printf("%s\n", path_cp);
+                                my_printf("%s\n", path_cp);
                                 free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
-                                printf("%s\n", table[i]);
+                                    my_printf("%s", "|-- ");
+                                my_printf("%s\n", table[i]);
                             }
                         }
                     }
@@ -230,33 +228,33 @@ void print_tree(int last, int *flags, char *path, char **table)
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
+                                    my_printf("%s", "|-- ");
                                 path_cp = str_cp2(&test_path);
-                                printf("%s\n", path_cp);
+                                my_printf("%s\n", path_cp);
                                 free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
-                                printf("%s\n", table[i]);
+                                    my_printf("%s", "|-- ");
+                                my_printf("%s\n", table[i]);
                             }
                         }
                     } else if (table[i][0] != '.') {
@@ -264,33 +262,33 @@ void print_tree(int last, int *flags, char *path, char **table)
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
+                                    my_printf("%s", "|-- ");
                                 path_cp = str_cp2(&test_path);
-                                printf("%s\n", path_cp);
+                                my_printf("%s\n", path_cp);
                                 free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
                                 if (last == 0) {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "|   ");
+                                        my_printf("%s", "|   ");
                                 } else {
                                     for (int i = 0; i < flags[6]; i++)
-                                        printf("%s", "    ");
+                                        my_printf("%s", "    ");
                                 }
                                 if (table[i + 1] == NULL)
-                                    printf("`-- ");
+                                    my_printf("`-- ");
                                 else
-                                    printf("%s", "|-- ");
-                                printf("%s\n", table[i]);
+                                    my_printf("%s", "|-- ");
+                                my_printf("%s\n", table[i]);
                             }
                         }
                     }
@@ -319,6 +317,6 @@ int main(int ac, char **av)
 
     flags = check_flags(flags, ac, av);
     get_path("./", 0, flags);
-    printf("\n%i directories, %i files\n\n", flags[4], flags[5]);
+    my_printf("\n%i directories, %i files\n", flags[4], flags[5]);
     free(flags);
 }
