@@ -22,6 +22,8 @@ typedef struct info
     int *pos_folder;
 } info ;
 
+char *my_strcpy(char *dest, char const *src);
+
 int my_modified_strcmp(char const *s1, char const *s2);
 
 void my_putchar(char c);

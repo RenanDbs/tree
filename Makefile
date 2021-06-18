@@ -15,7 +15,9 @@ SRC	=	./main.c \
 		./lib/my_strcmp.c	\
 		./lib/my_strncat.c	\
 		./lib/printer_assistant.c	\
-		./lib/printf.c
+		./lib/printf.c	\
+		./my_strcpy.c\
+		./my_strlen.c\
 
 INC	=	-I./lib/
 
