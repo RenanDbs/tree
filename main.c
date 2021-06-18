@@ -35,6 +35,8 @@ int cont_files(char *path)
     int files = 0;
 
     folder = opendir(path);
+    if (folder == NULL)
+        return (-1);
     while ( (entry = readdir(folder)) )
     {
         files++;
@@ -76,7 +78,24 @@ char **sort_table(char **table, int nb_files)
     return (table);
 }
 
-void get_path(int depth, char *path)
+char big_letter(char c)
+{
+    if (c > 90)
+        return (c - 32);
+    return (c);
+}
+
+int str_compare2(char *str1, char *str2)
+{
+    if (my_strlen(str1) != my_strlen(str2))
+        return (0);
+    for (int i = 0; str1[i] != '\0' && str2[i] != '\0'; i++)
+        if (big_letter(str1[i]) != big_letter(str2[i]))
+            return (0);
+    return (1);
+}
+
+void get_path(int depth, char *path, int last)
 {
     int nb_files = cont_files(path);
     char **table = malloc(sizeof(char *) * (nb_files + 1));
@@ -96,11 +115,21 @@ void get_path(int depth, char *path)
     sort_table(table, nb_files);
     closedir(folder);
     for (int i = 0; table[i] != NULL; i++) {
-        printf("%i %s\n", depth, table[i]);
+        if (last == 0)
+            for (int i = 0; i < depth; i++)
+                printf("%s", "|   ");
+        if (table[i + 1] == NULL)
+            printf("`");
+        else 
+            printf("%s", "|");
+        printf("-- %s\n", table[i]);
         test_path = add_path(path, table[i]);
         folder = opendir(test_path);
         if (folder != NULL && table[i][0] != '.') {
-            get_path(depth + 1, test_path);
+            if (table[i + 1] == NULL)
+                get_path(depth + 1, test_path, 1);
+            else
+                get_path(depth + 1, test_path, 0);
         }
         closedir(folder);
         free(test_path);
@@ -112,5 +141,5 @@ void get_path(int depth, char *path)
 
 int main()
 {
-    get_path(0, "./");
+    get_path(0, "./", 0);
 }
