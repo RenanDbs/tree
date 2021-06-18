@@ -63,8 +63,10 @@ char **sort_table(char **table, int nb_files)
                 tmp = malloc(sizeof(char) * (my_strlen(table[i]) + 1));
                 swapped = 0;
                 my_strcpy(tmp, table[i]);
+                free(table[i]);
                 table[i] = malloc(sizeof(char) * (my_strlen(table[i + 1]) + 1));
                 my_strcpy(table[i], table[i + 1]);
+                free(table[i + 1]);
                 table[i + 1] = malloc(sizeof(char) * (my_strlen(tmp) + 1));
                 my_strcpy(table[i + 1], tmp);
                 free(tmp);
