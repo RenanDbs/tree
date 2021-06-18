@@ -230,9 +230,9 @@ void print_tree(int last, int *flags, char *path, char **table)
             }
         }
         if (folder != NULL && !str_compare(table[i], ".") && !str_compare(table[i], "..")) {
-            flags[4] += 1;
             flags[6] += 1;
-            if ((table[i][0] == '.' && flags[0] == 1) || (table[i][0] != '.' && flags[0] == 0)) {
+            if (((flags[0] == 1) || (table[i][0] != '.' && flags[0] == 0)) && flags[2] > flags[6]) {
+            flags[4] += 1;
                 if (table[i + 1] == NULL && flags[6] == 0)
                     get_path(test_path, 1, flags);
                 else
