@@ -28,8 +28,7 @@ int cont_files(char *path)
     folder = opendir(path);
     if (folder == NULL)
         return (-1);
-    while ( (entry = readdir(folder)) )
-    {
+    while ( (entry = readdir(folder)) ) {
         files++;
     }
     closedir(folder);
