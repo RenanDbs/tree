@@ -80,6 +80,18 @@ char big_letter(char c)
     return (c);
 }
 
+char *str_cp2(char **str)
+{
+    char *cp = malloc(sizeof(char) * my_strlen(*str));
+
+    if (cp == NULL)
+        return (NULL);
+    cp[my_strlen(*str) - 1] = '\0';
+    for (int i = 0; (*str)[i + 1] != '\0'; i++)
+        cp[i] = (*str)[i];
+    return (cp);
+}
+
 int str_compare2(char *str1, char *str2)
 {
     if (my_strlen(str1) != my_strlen(str2))
@@ -116,6 +128,7 @@ void print_tree(int last, int *flags, char *path, char **table)
 {
     char *test_path = NULL;
     DIR *folder = NULL;
+    char *path_cp = NULL;
 
     // for (int i = 0; i < 7; i++)
     //     printf("%i\n", flags[i]);
@@ -137,7 +150,9 @@ void print_tree(int last, int *flags, char *path, char **table)
                                     printf("`-- ");
                                 else
                                     printf("%s", "|-- ");
-                                printf("%s\n", test_path);
+                                path_cp = str_cp2(&test_path);
+                                printf("%s\n", path_cp);
+                                free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
@@ -161,7 +176,9 @@ void print_tree(int last, int *flags, char *path, char **table)
                                     printf("`-- ");
                                 else
                                     printf("%s", "|-- ");
-                                printf("%s\n", test_path);
+                                path_cp = str_cp2(&test_path);
+                                printf("%s\n", path_cp);
+                                free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
@@ -188,7 +205,9 @@ void print_tree(int last, int *flags, char *path, char **table)
                                     printf("`-- ");
                                 else
                                     printf("%s", "|-- ");
-                                printf("%s\n", test_path);
+                                path_cp = str_cp2(&test_path);
+                                printf("%s\n", path_cp);
+                                free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
@@ -212,7 +231,9 @@ void print_tree(int last, int *flags, char *path, char **table)
                                     printf("`-- ");
                                 else
                                     printf("%s", "|-- ");
-                                printf("%s\n", test_path);
+                                path_cp = str_cp2(&test_path);
+                                printf("%s\n", path_cp);
+                                free(path_cp);
                             }
                         } else {
                             if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
