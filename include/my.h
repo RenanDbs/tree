@@ -12,6 +12,7 @@
 #include <dirent.h>
 #include <unistd.h> 
 #include <stdarg.h>
+#include <limits.h>
 
 typedef unsigned int ui;
 

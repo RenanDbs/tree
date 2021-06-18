@@ -24,5 +24,7 @@ int *check_flags(int ac, char **av)
         if (my_strcmp(av[i], "-f") == 0)
             flagarray[3] = 1; 
     }
+    if (flagarray[2] == 0)
+        flagarray[2] = INT_MAX;
     return flagarray;
 }
