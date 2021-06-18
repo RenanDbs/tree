@@ -14,7 +14,7 @@ NAME	=	tree
 all:	$(NAME)
 
 $(NAME):
-		gcc $(SRC) $(INC) -o $(NAME) -lm -g3
+		gcc $(SRC) $(INC) -o $(NAME) -lm -g3 -Wall -Wextra
 
 clean:
 		rm -f $(NAME)
