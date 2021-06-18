@@ -251,5 +251,5 @@ int main(int ac, char **av)
     int *flags = check_flags(ac, av);
 
     get_path("./", 0, flags);
-    printf("dir: %i\nfile: %i\n", flags[4], flags[5]);
+    printf("\n%i directories, %i files\n\n", flags[4], flags[5]);
 }
