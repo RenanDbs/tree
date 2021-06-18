@@ -11,4 +11,9 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <dirent.h>
-#include <unistd.h>
+#include <unistd.h> 
+
+typedef struct info
+{
+    int *pos_folder;
+} info ;
