@@ -95,51 +95,173 @@ int str_compare2(char *str1, char *str2)
     return (1);
 }
 
-void get_path(int depth, char *path, int last)
+void get_path(char *path, int last, int *flags)
 {
     int nb_files = cont_files(path);
     char **table = malloc(sizeof(char *) * (nb_files + 1));
-    char *test_path = NULL;
     DIR *folder = NULL;
     struct dirent *entry = NULL;
-    char *prev_folder = NULL;
     int i = 0;
 
     table[nb_files] = NULL;
     folder = opendir(path);
-    while ( (entry = readdir(folder)) )
-    { 
+    while ( (entry = readdir(folder)) ) { 
         table[i] = strdup(entry->d_name);
         i++;
     }
     sort_table(table, nb_files);
     closedir(folder);
-    for (int i = 0; table[i] != NULL; i++) {
-        if (last == 0)
-            for (int i = 0; i < depth; i++)
-                printf("%s", "|   ");
-        if (table[i + 1] == NULL)
-            printf("`");
-        else 
-            printf("%s", "|");
-        printf("-- %s\n", table[i]);
-        test_path = add_path(path, table[i]);
-        folder = opendir(test_path);
-        if (folder != NULL && table[i][0] != '.') {
-            if (table[i + 1] == NULL)
-                get_path(depth + 1, test_path, 1);
-            else
-                get_path(depth + 1, test_path, 0);
-        }
-        closedir(folder);
-        free(test_path);
-    }
+    print_tree(last, flags, path, table);
     for (int i = 0; table[i] != NULL; i++)
         free(table[i]);
     free(table);
 }
 
+void print_tree(int last, int *flags, char *path, char **table)
+{
+    char *test_path = NULL;
+    DIR *folder = NULL;
+
+    // for (int i = 0; i < 7; i++)
+    //     printf("%i\n", flags[i]);
+    for (int i = 0; table[i] != NULL; i++) {
+        if (i == 0 && flags[6] == 0)
+            printf(".\n");
+        test_path = add_path(path, table[i]);
+        folder = opendir(test_path);
+        if (flags[3] > flags[6]) {
+            if (flags[1] == 1) {
+                if (folder != NULL) {
+                    if (flags[0] == 1) {
+                        if (flags[2] == 1) {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", test_path);
+                            }
+                        } else {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", table[i]);
+                            }
+                        }
+                    } else if (table[i][0] != '.'){
+                        if (flags[2] == 1) {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", test_path);
+                            }
+                        } else {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", table[i]);
+                            }
+                        }
+                    }
+                }
+            } else {
+                if (flags[0] == 1) {
+                        if (flags[2] == 1) {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", test_path);
+                            }
+                        } else {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", table[i]);
+                            }
+                        }
+                    } else if (table[i][0] != '.') {
+                        if (flags[2] == 1) {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", test_path);
+                            }
+                        } else {
+                            if (!str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+                                if (last == 0)
+                                    for (int i = 0; i < flags[6]; i++)
+                                        printf("%s", "|   ");
+                                if (table[i + 1] == NULL)
+                                    printf("`-- ");
+                                else
+                                    printf("%s", "|-- ");
+                                printf("%s\n", table[i]);
+                            }
+                        }
+                    }
+            }
+        }
+        if (folder != NULL && !str_compare(table[i], ".") && !str_compare(table[i], "..")) {
+            flags[4] += 1;
+            flags[6] += 1;
+            if ((table[i][0] == '.' && flags[0] == 1) || (table[i][0] != '.' && flags[0] == 0)) {
+                if (table[i + 1] == NULL && flags[6] == 0)
+                    get_path(test_path, 1, flags);
+                else
+                    get_path(test_path, 0, flags);
+            }
+            flags[6] -= 1;
+        } else if (folder == NULL)
+            flags[5] += 1;
+        closedir(folder);
+        free(test_path);
+    }
+}
+
 int main()
 {
-    get_path(0, "./", 0);
+    int *input = malloc(sizeof(int) * 7);
+
+    input[0] = 1;
+    input[1] = 0;
+    input[2] = 1;
+    input[3] = 100;
+    input[4] = 0;
+    input[5] = 0;
+    input[6] = 0;
+    get_path("./", 0, input);
+    printf("dir: %i\nfile: %i\n", input[4], input[5]);
 }
