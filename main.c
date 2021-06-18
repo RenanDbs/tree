@@ -83,8 +83,6 @@ void get_path(int depth, char *path)
     char *test_path = NULL;
     DIR *folder = NULL;
     struct dirent *entry = NULL;
-    int files = 0;
-    int nb_folders = 0;
     char *prev_folder = NULL;
     int i = 0;
 
@@ -96,17 +94,20 @@ void get_path(int depth, char *path)
         i++;
     }
     sort_table(table, nb_files);
+    closedir(folder);
     for (int i = 0; table[i] != NULL; i++) {
         printf("%i %s\n", depth, table[i]);
         test_path = add_path(path, table[i]);
-        if (opendir(test_path) != NULL && table[i][0] != '.') {
+        folder = opendir(test_path);
+        if (folder != NULL && table[i][0] != '.') {
             get_path(depth + 1, test_path);
         }
+        closedir(folder);
+        free(test_path);
     }
     for (int i = 0; table[i] != NULL; i++)
         free(table[i]);
     free(table);
-    closedir(folder);
 }
 
 int main()
