@@ -13,10 +13,40 @@
 #include <dirent.h>
 #include <unistd.h> 
 
+typedef unsigned int ui;
+
+typedef long long int lli;
+
 typedef struct info
 {
     int *pos_folder;
 } info ;
 
+<<<<<<< HEAD
 char *my_strcpy(char *dest, char const *src);
 int my_strlen(char const *str);
+=======
+int my_modified_strcmp(char const *s1, char const *s2);
+
+void my_putchar(char c);
+
+void my_errchar(char c);
+
+int my_putstr(char const *str);
+
+int my_put_oct(lli count);
+
+int my_put_hex(lli count);
+
+int my_put_hex_up(lli count);
+
+int my_put_bin(lli count);
+
+int my_put_adress(lli count);
+
+int put_sign_before(lli count);
+
+int my_put_nbr(int nb);
+
+int my_strlen(char *str);
+>>>>>>> 29eca69278af828012e3c52c42aa917fa37f3da0
