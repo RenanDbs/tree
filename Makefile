@@ -18,6 +18,7 @@ SRC	=	./main.c \
 		./lib/printf.c	\
 		./my_strcpy.c\
 		./my_strlen.c\
+		./lib/my_getnbr.c
 
 INC	=	-I./lib/
 
