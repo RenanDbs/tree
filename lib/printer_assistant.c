@@ -5,9 +5,6 @@
 ** recode of the forbidden fruit ;)
 */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
 #include "../include/my.h"
 
 int put_sign_before(lli count)

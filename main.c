@@ -110,7 +110,9 @@ void get_path(int depth, char *path)
     free(table);
 }
 
-int main()
+int main(int ac, char **av)
 {
+    int *flags = check_flags(ac, av);
+    
     get_path(0, "./");
 }
