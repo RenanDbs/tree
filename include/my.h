@@ -53,10 +53,38 @@ int my_strlen(char *str);
 
 int my_getnbr(char const *str);
 
-void print_tree(int last, int *flags, char *path, char **table);
+void print_tree(int *flags, char *path, char **table);
 
 int my_strcmp(char const *s1, char const *s2);
 
 int my_printf(const char *format, ...);
 
 int *check_flags(int *flagarray, int ac, char **av);
+
+int str_compare(char *str1, char *str2);
+
+int cont_files(char *path);
+
+char *add_path(char *str, char *path);
+
+char **sort_table(char **table);
+
+char big_letter(char c);
+
+char *str_cp2(char **str);
+
+int str_compare2(char *str1, char *str2);
+
+char *my_strdup(char *str);
+
+void get_path(char *path, int *flags);
+
+void print_tree_path(char **table, char *test_path, int *flags, int i);
+
+void print_tree_entry(char **table, int *flags, int i);
+
+void print_controller(char **table, char *test_path, int *flags, int i);
+
+void check_dash_a(char **table, char *test_path, int *flags, int i);
+
+void recursive_caller(char **table, char *path, int *flags, int i);
